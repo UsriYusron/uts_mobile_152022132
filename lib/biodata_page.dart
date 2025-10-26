@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 class BiodataPage extends StatefulWidget {
+  const BiodataPage({super.key});
+
   @override
   _BiodataPageState createState() => _BiodataPageState();
 }
@@ -15,6 +17,25 @@ class _BiodataPageState extends State<BiodataPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[50],
+      appBar: AppBar(
+        title: const Text(
+          'Biodata',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+            fontSize: 24,
+          ),
+        ),
+        backgroundColor: Colors.deepPurple,
+        elevation: 0,
+        centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -66,7 +87,7 @@ class _BiodataPageState extends State<BiodataPage> {
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.school),
               ),
-              value: _selectedPendidikan,
+              initialValue: _selectedPendidikan,
               hint: const Text('Pilih Pendidikan'),
               items: _pendidikanOptions.map((String value) {
                 return DropdownMenuItem<String>(

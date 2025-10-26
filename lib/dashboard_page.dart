@@ -31,10 +31,10 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashboard Aplikasi'),
-        backgroundColor: Colors.blueAccent,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Dashboard Aplikasi'),
+      //   backgroundColor: Colors.blueAccent,
+      // ),
       // Tampilkan "Fragment" yang dipilih
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

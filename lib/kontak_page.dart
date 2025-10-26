@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class Contact {
   final String name;
   final String phone;
-  final String avatarPath; // Untuk Path Gambar/Icon
+  final String avatarPath;
 
   Contact(this.name, this.phone, this.avatarPath);
 }
@@ -14,40 +14,140 @@ class Contact {
 // Data Kontak Statis (Minimal 15)
 final List<Contact> staticContacts = [
   Contact('Aurelya Saniya', '0812-3456-7890', 'assets/images/aurel.jpg'),
-  Contact('Wowo cihuyy', '0857-1122-3344', 'assets/images/11.jpg'),
-  Contact('Joko solo', '0878-5566-7788', 'assets/images/user3.png'),
-  Contact('Dewi Kartika', '0896-9876-5432', 'assets/images/user4.png'),
-  Contact('Ahmad Yani', '0813-2468-1357', 'assets/images/user5.png'),
-  Contact('Rina Melati', '0852-9753-1086', 'assets/images/user6.png'),
-  Contact('Fajar Agung', '0811-4579-2038', 'assets/images/user7.png'),
-  Contact('Lia Natalia', '0856-3019-4827', 'assets/images/user8.png'),
-  Contact('Bayu Prakasa', '0877-6251-8394', 'assets/images/user9.png'),
-  Contact('Citra Dewi', '0895-1736-4920', '0895-1736-4920'), // Pakai Icon Default
-  Contact('Eka Putra', '0812-9012-3456', '0812-9012-3456'), // Pakai Icon Default
-  Contact('Gita Adelia', '0857-8901-2345', '0857-8901-2345'), // Pakai Icon Default
-  Contact('Hari Wijaya', '0878-7654-3210', '0878-7654-3210'), // Pakai Icon Default
-  Contact('Indah Sari', '0896-2345-6789', '0896-2345-6789'), // Pakai Icon Default
-  Contact('Kusuma Jaya', '0813-5678-9012', '0813-5678-9012'), // Pakai Icon Default
+  Contact('Wowo cihuyy', '0838-2740-6460', 'assets/images/11.jpg'),
+  Contact('Joko solo', '0878-5566-7788', 'assets/images/foto_saya.jpg'),
+  Contact('Dewi Kartika', '0896-9876-5432', '0896-9876-5432'),
+  Contact('Ahmad Yani', '0813-2468-1357', '0895-1736-4920'),
+  Contact('Rina Melati', '0852-9753-1086', '0852-9753-1086'),
+  Contact('Fajar Agung', '0811-4579-2038', '0811-4579-2038'),
+  Contact('Lia Natalia', '0856-3019-4827', '0856-3019-4827'),
+  Contact('Bayu Prakasa', '0877-6251-8394', '0877-6251-8394'),
+  Contact('Citra Dewi', '0895-1736-4920', '0895-1736-4920'),
+  Contact('Eka Putra', '0812-9012-3456', '0812-9012-3456'),
+  Contact('Gita Adelia', '0857-8901-2345', '0857-8901-2345'),
+  Contact('Hari Wijaya', '0878-7654-3210', '0878-7654-3210'),
+  Contact('Indah Sari', '0896-2345-6789', '0896-2345-6789'),
+  Contact('Kusuma Jaya', '0813-5678-9012', '0813-5678-9012'),
 ];
 
 class KontakPage extends StatelessWidget {
+  const KontakPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        // Border ungu di sisi (opsional, meniru gambar)
-        decoration: BoxDecoration(
-          border: Border(
-            right: BorderSide(color: Colors.deepPurple, width: 8.0),
-            left: BorderSide(color: Colors.deepPurple, width: 8.0),
+      backgroundColor: Colors.grey[50],
+      appBar: AppBar(
+        title: const Text(
+          'Contacts',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+            fontSize: 24,
           ),
         ),
-        child: ListView.builder(
-          itemCount: staticContacts.length,
-          itemBuilder: (context, index) {
-            final contact = staticContacts[index];
-            return ContactListItem(contact: contact);
-          },
+        backgroundColor: Colors.deepPurple,
+        elevation: 0,
+        centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.deepPurple.shade50,
+              Colors.grey[50]!,
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            // Search Bar
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.deepPurple.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search contacts...',
+                    hintStyle: TextStyle(color: Colors.grey[600]),
+                    prefixIcon: Icon(Icons.search, color: Colors.deepPurple),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                  ),
+                ),
+              ),
+            ),
+            
+            // Contact Count
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Row(
+                children: [
+                  Text(
+                    '${staticContacts.length} contacts',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            
+            const SizedBox(height: 8),
+            
+            // Contacts List
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.deepPurple.withOpacity(0.1),
+                      blurRadius: 15,
+                      offset: const Offset(0, -2),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: staticContacts.length,
+                    itemBuilder: (context, index) {
+                      final contact = staticContacts[index];
+                      return ContactListItem(contact: contact, index: index);
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -57,24 +157,84 @@ class KontakPage extends StatelessWidget {
 // Widget Custom untuk Tampilan Setiap Item Kontak
 class ContactListItem extends StatelessWidget {
   final Contact contact;
+  final int index;
 
-  const ContactListItem({required this.contact});
+  const ContactListItem({super.key, required this.contact, required this.index});
 
-  // Fungsi untuk mendapatkan widget avatar (gambar atau ikon default)
+  // Fungsi untuk mendapatkan warna gradient berdasarkan index
+  List<Color> _getGradientColors(int index) {
+    final colors = [
+      [Colors.blue.shade400, Colors.blue.shade600],
+      [Colors.purple.shade400, Colors.purple.shade600],
+      [Colors.pink.shade400, Colors.pink.shade600],
+      [Colors.orange.shade400, Colors.orange.shade600],
+      [Colors.teal.shade400, Colors.teal.shade600],
+    ];
+    return colors[index % colors.length];
+  }
+
+  // Fungsi untuk mendapatkan inisial nama
+  String _getInitials(String name) {
+    final names = name.split(' ');
+    if (names.length > 1) {
+      return '${names[0][0]}${names[1][0]}';
+    } else {
+      return name.length > 1 ? name.substring(0, 2) : name;
+    }
+  }
+
   Widget _getAvatarWidget() {
-    // Cek apakah path_nya valid (misal: ada kata 'assets')
     if (contact.avatarPath.contains('assets')) {
-      return CircleAvatar(
-        radius: 30,
-        backgroundImage: AssetImage(contact.avatarPath),
-        backgroundColor: Colors.grey.shade200,
+      return Container(
+        width: 52,
+        height: 52,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white, width: 2),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: CircleAvatar(
+          radius: 25,
+          backgroundImage: AssetImage(contact.avatarPath),
+          backgroundColor: Colors.grey.shade200,
+        ),
       );
     } else {
-      // Fallback ke Icon default jika gambar tidak tersedia
-      return CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.deepPurple.withOpacity(0.1),
-        child: Icon(Icons.person, size: 30, color: Colors.deepPurple),
+      final gradientColors = _getGradientColors(index);
+      return Container(
+        width: 52,
+        height: 52,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            colors: gradientColors,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: gradientColors[0].withOpacity(0.3),
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            _getInitials(contact.name),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
+          ),
+        ),
       );
     }
   }
@@ -82,54 +242,94 @@ class ContactListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: Colors.grey.shade300, width: 1.0),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withOpacity(0.05),
             spreadRadius: 1,
-            blurRadius: 2,
-            offset: const Offset(0, 1), // slight shadow
+            blurRadius: 4,
+            offset: const Offset(0, 1),
           ),
         ],
       ),
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-        // Circle Image/Avatar
-        leading: _getAvatarWidget(),
-
-        // Nama dan Telepon
-        title: Text(
-          contact.name,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            color: Colors.deepPurple.shade700, // Warna ungu sesuai gambar
-          ),
-        ),
-        subtitle: Text(
-          contact.phone,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.deepPurple.shade400, // Warna ungu sesuai gambar
-          ),
-        ),
-
-        // Aksi Tambahan (Contoh: Tombol Panggil)
-        trailing: IconButton(
-          icon: const Icon(Icons.phone, color: Colors.green),
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Memanggil ${contact.name}...')),
-            );
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(15),
+          onTap: () {
+            // Aksi ketika item diklik
           },
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                // Avatar
+                _getAvatarWidget(),
+                
+                const SizedBox(width: 16),
+                
+                // Contact Info
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        contact.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        contact.phone,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                
+                // Action Buttons
+                Row(
+                  children: [
+                    // Call Button
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade50,
+                        shape: BoxShape.circle,
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.phone, color: Colors.green.shade600, size: 20),
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Memanggil ${contact.name}...'),
+                              backgroundColor: Colors.green.shade600,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    
+                    const SizedBox(width: 8),
+                    
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
-        onTap: () {
-          // Aksi ketika item diklik
-        },
       ),
     );
   }

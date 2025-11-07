@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'biodata_page.dart'; // Import halaman menu lainnya
 import 'kontak_page.dart';
 import 'kalkulator_page.dart';
+import 'cuaca_page.dart';
+import 'berita_page.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -17,9 +19,8 @@ class _DashboardPageState extends State<DashboardPage> {
     BiodataPage(),
     KontakPage(),
     KalkulatorPage(),
-    Text('Halaman Kalkulator'),
-    Text('Halaman Cuaca'),
-    Text('Halaman Berita'),
+    CuacaPage(),
+    BeritaPage(),
   ];
 
   void _onItemTapped(int index) {

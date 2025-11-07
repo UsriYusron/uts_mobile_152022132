@@ -46,7 +46,7 @@ class KontakPage extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue.shade700,
         elevation: 0,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
@@ -61,7 +61,7 @@ class KontakPage extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.deepPurple.shade50,
+              Colors.blue.shade50,
               Colors.grey[50]!,
             ],
           ),

@@ -123,7 +123,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                 fontSize: 24,
               ),
             ),
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Colors.blue.shade700,
             elevation: 0,
             centerTitle: true,
             shape: const RoundedRectangleBorder(
@@ -147,8 +147,8 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.deepPurple.shade500,
-                      const Color.fromARGB(255, 255, 136, 0),
+                      Colors.blue.shade700,
+                      const Color.fromARGB(255, 37, 207, 222),
                     ],
                   ),
                   borderRadius: const BorderRadius.only(
@@ -231,7 +231,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                                 _buildButton('9'),
                                 _buildButton(
                                   '÷',
-                                  bgColor: Colors.deepPurple.shade400,
+                                  bgColor: Colors.blue.shade700,
                                   textColor: Colors.white,
                                 ),
                               ],
@@ -245,7 +245,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                                 _buildButton('6'),
                                 _buildButton(
                                   '×',
-                                  bgColor: Colors.deepPurple.shade400,
+                                  bgColor: Colors.blue.shade700,
                                   textColor: Colors.white,
                                 ),
                               ],
@@ -259,7 +259,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                                 _buildButton('3'),
                                 _buildButton(
                                   '-',
-                                  bgColor: Colors.deepPurple.shade400,
+                                  bgColor: Colors.blue.shade700,
                                   textColor: Colors.white,
                                 ),
                               ],
@@ -277,7 +277,7 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                                 ),
                                 _buildButton(
                                   '+',
-                                  bgColor: Colors.deepPurple.shade400,
+                                  bgColor: Colors.blue.shade700,
                                   textColor: Colors.white,
                                 ),
                               ],

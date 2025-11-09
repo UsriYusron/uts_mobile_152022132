@@ -446,7 +446,7 @@ class _BiodataPageState extends State<BiodataPage> {
                       },
                     ),
                   ),
-                  const SizedBox(width: 13),
+                  const SizedBox(width: 16),
                   Expanded(
                     child: _buildRadioOption(
                       value: 'Wanita',

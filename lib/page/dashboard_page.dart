@@ -5,6 +5,7 @@ import 'kontak_page.dart';
 import 'kalkulator_page.dart';
 import 'cuaca_page.dart';
 import 'berita_page.dart';
+import '/components/bottom_navigation_bar.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
